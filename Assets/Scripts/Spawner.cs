@@ -11,6 +11,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private int _tanksPerSpawn;
     [SerializeField] private int _maxTanksOnScreen;
     [SerializeField] private int _totalTanks;
+    [SerializeField] private CoinsChanger _coinsChanger;
     private float _generatedSpawnTime;
     private int _tanksOnScreen;
     private float _currentSpawnTime;
@@ -34,7 +35,6 @@ public class Spawner : MonoBehaviour
             _generatedSpawnTime = Random.Range (_minSpawnTime, _maxSpawnTime);
             if (_tanksPerSpawn > -1 && _tanksOnScreen < _totalTanks)
             {
-                Debug.Log ("enter");
                 List<int> previousSpawnLocations = new List<int> ();
                 if (_tanksPerSpawn > _spawnPoints.Length)
                 {
@@ -56,12 +56,12 @@ public class Spawner : MonoBehaviour
                                 spawnPoint = randomNumber;
                             }
                         }
-                        Debug.Log ("create");
                         GameObject spawnLocation = _spawnPoints[spawnPoint];
                         GameObject newTank = Instantiate (_tankPrefab) as GameObject;
                         newTank.transform.position = spawnLocation.transform.position;
                         newTank.transform.rotation = spawnLocation.transform.rotation;
-                        newTank.GetComponent<EnemyTankHelper> ().OnDestroy.AddListener (TankDestroyed);
+                        newTank.GetComponent<EnemyHealth> ().OnDestroy.AddListener (TankDestroyed);
+                        newTank.GetComponent<EnemyHealth> ().OnDestroyFromBullet.AddListener (_coinsChanger.ChangeCoinsText);
                     }
                 }
             }
