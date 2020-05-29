@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce25983c67e0dc4daac9579584525e8, type: 3}
+  m_Name: EnemyTankSuitCollection
+  m_EditorClassIdentifier: 
+  enemyTankSuits:
+  - nameTank: Blue
+    body: {fileID: 21300000, guid: f437d9388182c8c47b4f1a091ba34b0f, type: 3}
+    damage: 15
+    health: 110
+    cost: 1
+  - nameTank: Dark
+    body: {fileID: 21300000, guid: 20b395d21215bb7498e23cbff6b15b98, type: 3}
+    damage: 20
+    health: 100
+    cost: 1
+  - nameTank: Green
+    body: {fileID: 21300000, guid: 04a297062a282a948a28cb54d37d833e, type: 3}
+    damage: 10
+    health: 110
+    cost: 1
+  - nameTank: Red
+    body: {fileID: 21300000, guid: b5da7cd35b6c6694ba549539f5076179, type: 3}
+    damage: 40
+    health: 120
+    cost: 2
+  - nameTank: Sand
+    body: {fileID: 21300000, guid: 244bed8c538a0c0458d78accff57c253, type: 3}
+    damage: 10
+    health: 80
+    cost: 0
+  barrel:
+  - {fileID: 21300000, guid: 4bc14b3a2aa01f143b74625bc4509b85, type: 3}
+  - {fileID: 21300000, guid: 8b84559b6d3359f41956cad4dd9ec5dd, type: 3}
+  - {fileID: 21300000, guid: 3de83b7d5673169429959c88095904ab, type: 3}
+  - {fileID: 21300000, guid: e24eb7ee203b6c843b6ede123021b7c5, type: 3}
+  - {fileID: 21300000, guid: 8f505594a0090c94388c3d7f7e20b456, type: 3}
+  - {fileID: 21300000, guid: 576c40dcdaa43bd4d93a42eb267f455a, type: 3}
+  - {fileID: 21300000, guid: 1da05616bfc1d3b42a626bbe113b68f1, type: 3}
+  - {fileID: 21300000, guid: ce2b9b5478859ea46aa19eeb4b23e3ec, type: 3}
+  - {fileID: 21300000, guid: 5fa3f5b89e6dbcc409d45688c4442ba6, type: 3}
+  - {fileID: 21300000, guid: 6409a1c6ffeea2641a6bade76e8ecf3e, type: 3}

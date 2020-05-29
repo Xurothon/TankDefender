@@ -15,10 +15,8 @@ public class DefenderHealth : MonoBehaviour
 
     void Awake ()
     {
-        if (PlayerPrefs.HasKey ("PlayerLives"))
-        {
-            startingHealth = PlayerPrefs.GetInt ("PlayerLives");
-        }
+
+        
         currentHealth = startingHealth;
         healthSlider.value = currentHealth;
     }

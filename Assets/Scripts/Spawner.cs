@@ -49,7 +49,7 @@ public class Spawner : MonoBehaviour
                         int spawnPoint = -1;
                         while (spawnPoint == -1)
                         {
-                            int randomNumber = Random.Range (0, _spawnPoints.Length - 1);
+                            int randomNumber = Random.Range (0, _spawnPoints.Length);
                             if (!previousSpawnLocations.Contains (randomNumber))
                             {
                                 previousSpawnLocations.Add (randomNumber);

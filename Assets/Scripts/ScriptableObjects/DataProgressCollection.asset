@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea6415f5cb03c542bfcc2b6f24cf5e3, type: 3}
+  m_Name: DataProgressCollection
+  m_EditorClassIdentifier: 
+  dataInfos:
+  - name: BulletDamage
+    startValue: 20
+    stepValue: 5
+    maxLevel: 5
+  - name: RotationSpeed
+    startValue: 20
+    stepValue: 2
+    maxLevel: 5
+  - name: DefenderHealth
+    startValue: 100
+    stepValue: 20
+    maxLevel: 5

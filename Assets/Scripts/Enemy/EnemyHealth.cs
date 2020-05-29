@@ -7,7 +7,7 @@ public class MyIntEvent : UnityEngine.Events.UnityEvent<int> { }
 public class EnemyHealth : MonoBehaviour
 {
 
-    [SerializeField] private int _startHealth;
+    public int _startHealth;
     [SerializeField] private Image _healthImage;
     [SerializeField] private Color _goodHealth;
     [SerializeField] private Color _normalHealth;
@@ -19,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamege (int damage)
     {
+        Debug.Log (_health + " " + damage);
         _health -= damage;
         if (_health > 0) ChangeHealthImage (_health);
         else DieFromBullet ();
@@ -43,8 +44,9 @@ public class EnemyHealth : MonoBehaviour
         _cost = cost;
     }
 
-    private void Awake ()
+    public void SetHealthValue (int health)
     {
+        _startHealth = health;
         _health = _startHealth;
         _healthImage.fillAmount = 1;
         _healthImage.color = _goodHealth;
