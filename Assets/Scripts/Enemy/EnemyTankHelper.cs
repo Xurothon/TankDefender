@@ -1,23 +1,22 @@
 ﻿using UnityEngine;
 
-[RequireComponent (typeof (EnemyHealth))]
+[RequireComponent(typeof(EnemyHealth))]
 public class EnemyTankHelper : MonoBehaviour
 {
-
-    [SerializeField] private float _speed;
     public int Damage { get; set; }
+    [SerializeField] private float _speed;
 
-    private void FixedUpdate ()
+    private void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards (transform.position, Vector3.zero, _speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, Vector3.zero, _speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D (Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<DefenderHealth> () != null)
+        if (other.gameObject.TryGetComponent(out DefenderHealth defenderHealth))
         {
-            GetComponent<EnemyHealth> ().Die ();
-            other.gameObject.GetComponent<DefenderHealth> ().TakeDamage (Damage);
+            GetComponent<EnemyHealth>().Die();
+            defenderHealth.TakeDamage(Damage);
         }
     }
 }

@@ -4,12 +4,12 @@ public class BulletDamager : MonoBehaviour
 {
     public int Damage { get; set; }
 
-    private void OnCollisionEnter2D (Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<EnemyHealth> () != null)
+        if (other.gameObject.TryGetComponent(out EnemyHealth enemyHealth))
         {
-            other.gameObject.GetComponent<EnemyHealth> ().TakeDamege (Damage);
-            Destroy (gameObject);
+            enemyHealth.TakeDamege(Damage);
+            Destroy(gameObject);
         }
     }
 }

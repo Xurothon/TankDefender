@@ -6,40 +6,40 @@ public class DefenderHelper : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private EventTrigger eventTrigger;
 
-    [Header ("Bullet Settings")]
+    [Header("Bullet Settings")]
     [SerializeField] private float _bulletSpeed;
     [SerializeField] private float _bulletLifeTime;
     [SerializeField] private Transform _spawnBulletPosition;
     [SerializeField] private Transform _bulletTarget;
     [SerializeField] private GameObject _bullet;
 
-    private void Awake ()
-    {
-        EventTrigger.Entry entry = new EventTrigger.Entry ();
-        entry.eventID = EventTriggerType.PointerDown;
-        entry.callback.AddListener ((data) => ChangeDirection ((PointerEventData) data));
-        eventTrigger.triggers.Add (entry);
-    }
-
-    private void FixedUpdate ()
-    {
-        transform.Rotate (Vector3.forward, _speed * Time.deltaTime);
-    }
-
-    private void ChangeDirection (PointerEventData data)
+    private void ChangeDirection(PointerEventData data)
     {
         _speed *= -1f;
-        Shoot ();
+        Shoot();
     }
 
-    private void Shoot ()
+    private void Shoot()
     {
-        GameObject bullet = Instantiate (_bullet);
+        GameObject bullet = Instantiate(_bullet);
         bullet.transform.position = _spawnBulletPosition.transform.position;
         bullet.transform.rotation = transform.rotation;
         Vector3 direction = _bulletTarget.position - Vector3.zero;
-        bullet.GetComponent<Rigidbody2D> ().AddForce (direction.normalized * _bulletSpeed, ForceMode2D.Impulse);
-        bullet.GetComponent<BulletDamager> ().Damage = 20;
-        Destroy (bullet, _bulletLifeTime);
+        bullet.GetComponent<Rigidbody2D>().AddForce(direction.normalized * _bulletSpeed, ForceMode2D.Impulse);
+        bullet.GetComponent<BulletDamager>().Damage = 20;
+        Destroy(bullet, _bulletLifeTime);
+    }
+
+    private void Awake()
+    {
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        entry.eventID = EventTriggerType.PointerDown;
+        entry.callback.AddListener((data) => ChangeDirection((PointerEventData)data));
+        eventTrigger.triggers.Add(entry);
+    }
+
+    private void FixedUpdate()
+    {
+        transform.Rotate(Vector3.forward, _speed * Time.deltaTime);
     }
 }

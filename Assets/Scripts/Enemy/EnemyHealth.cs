@@ -6,59 +6,53 @@ public class MyIntEvent : UnityEngine.Events.UnityEvent<int> { }
 
 public class EnemyHealth : MonoBehaviour
 {
-
-    public int _startHealth;
-    [SerializeField] private Image _healthImage;
-    [SerializeField] private Color _goodHealth;
-    [SerializeField] private Color _normalHealth;
-    [SerializeField] private Color _badHealth;
-    private int _health;
-    private int _cost;
     public UnityEngine.Events.UnityEvent OnDestroy;
     public MyIntEvent OnDestroyFromBullet;
+    [SerializeField] private Image _healthImage;
+    [SerializeField] private Gradient _gradient;
+    private int _startHealth;
+    private int _health;
+    private int _cost;
 
-    public void TakeDamege (int damage)
+
+    public void TakeDamege(int damage)
     {
-        Debug.Log (_health + " " + damage);
         _health -= damage;
-        if (_health > 0) ChangeHealthImage (_health);
-        else DieFromBullet ();
+        if (_health > 0) ChangeHealthImage(_health);
+        else DieFromBullet();
     }
 
-    public void Die ()
+    public void Die()
     {
-        OnDestroy.Invoke ();
-        OnDestroy.RemoveAllListeners ();
-        Destroy (gameObject);
+        OnDestroy.Invoke();
+        OnDestroy.RemoveAllListeners();
+        Destroy(gameObject);
     }
 
-    private void DieFromBullet ()
+    private void DieFromBullet()
     {
-        OnDestroyFromBullet.Invoke (_cost);
-        OnDestroyFromBullet.RemoveAllListeners ();
-        Die ();
+        OnDestroyFromBullet.Invoke(_cost);
+        OnDestroyFromBullet.RemoveAllListeners();
+        Die();
     }
 
-    public void SetCost (int cost)
+    public void SetCost(int cost)
     {
         _cost = cost;
     }
 
-    public void SetHealthValue (int health)
+    public void SetHealthValue(int health)
     {
         _startHealth = health;
         _health = _startHealth;
         _healthImage.fillAmount = 1;
-        _healthImage.color = _goodHealth;
+        _healthImage.color = _gradient.Evaluate(1);
     }
 
-    private void ChangeHealthImage (int health)
+    private void ChangeHealthImage(int health)
     {
-        _healthImage.fillAmount = (float) _health / _startHealth;
-        if (health < 65)
-        {
-            if (health > 30) _healthImage.color = _normalHealth;
-            else _healthImage.color = _badHealth;
-        }
+        float healthPercentage = (float)_health / _startHealth;
+        _healthImage.fillAmount = healthPercentage;
+        _healthImage.color = _gradient.Evaluate(healthPercentage);
     }
 }
